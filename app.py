@@ -3,7 +3,7 @@ import google.generativeai as genai
 from PIL import Image
 
 # Sabse fresh key jo aapne abhi banayi hai
-genai.configure(api_key="AIzaSyANkd3Z9S5tFQNFqA45eGUO8jfaUvrSK0")
+genai.configure(api_key="AIzaSyDLHcqfApzr7f1SW1D9yPw3_ZcGJVEkMpg")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 st.title("🚀 Ad-Vantage AI: Connection Test")
