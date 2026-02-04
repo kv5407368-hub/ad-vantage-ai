@@ -2,21 +2,22 @@ import streamlit as st
 import google.generativeai as genai
 from PIL import Image
 
-# DIRECT KEY - Isme koi badlaav mat karna
-genai.configure(api_key="AIzaSyD1GRiJQNvpLdYyyljoFaRkexlBS8-LOAI")
+# Sabse fresh key jo aapne abhi banayi hai
+genai.configure(api_key="AIzaSyANkd3Z9S5tFQNFqA45eGUO8jfaUvrSK0")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-st.title("🚀 Ad-Vantage AI: Step 1 Test")
+st.title("🚀 Ad-Vantage AI: Connection Test")
 
-uploaded_file = st.file_uploader("Photo dalo", type=["jpg", "png", "jpeg"])
+file = st.file_uploader("Upload any image", type=["jpg", "png", "jpeg"])
 
-if uploaded_file and st.button("Check Karo"):
-    try:
-        img = Image.open(uploaded_file)
-        st.image(img, width=300)
-        # AI se baat
-        response = model.generate_content(["Is photo mein kya hai?", img])
-        st.success("Analysis Poora Hua!")
-        st.write(response.text)
-    except Exception as e:
-        st.error(f"Error: {e}")
+if file:
+    img = Image.open(file)
+    st.image(img, width=300)
+    if st.button("Analyze Now"):
+        try:
+            # Seedha connection test
+            res = model.generate_content(["What is in this image?", img])
+            st.success("Connection Done!")
+            st.write(res.text)
+        except Exception as e:
+            st.error(f"Error: {e}")
